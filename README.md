@@ -74,7 +74,7 @@ npm install
 ```
 
 3. **Create Big Commerce API Account**
-In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account, noting the API Path, client ID, client secret. 
+In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account. Note the API Path, Client ID, and Client Secret. 
 
 4. **Create the `.env` file**
 This is a hidden file in your filesystem within the Git repo folder. Edit it by typing `open .env` if on a mac or use vi on linux. If you are on Windows, you will need to set the variables manually in the JS file or find another solution. 
@@ -87,7 +87,7 @@ OIDC_REDIRECT_URI=http://localhost:3000/oauth/callback
 BC_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxx
 BC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 BC_STORE_HASH= found in API Path url  https://api.bigcommerce.com/stores/xxxxxxxxxx/v3/
-BC_STORE_URL=https://storefrontname.mybigcommerce.com
+BC_STORE_URL=https://store-front-name.mybigcommerce.com
 ```
 
 # Run the App
