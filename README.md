@@ -16,11 +16,11 @@ Use this application to configure Single Sign On into a Big Commerce Storefront,
 
 Sample Images:
 
-![Authenticate](photo1.png)
+![Authenticate](Photo1.png)
 
-![Profile Viewer](photo2.png)
+![Profile Viewer](Photo2.png)
 
-![Dynamic SSO](photo3.png)
+![Dynamic SSO](Photo3.png)
 
 References: 
 - [Express.js](https://expressjs.com/) 
