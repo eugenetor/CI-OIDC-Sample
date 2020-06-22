@@ -16,6 +16,11 @@ Use this application to configure Single Sign On into a Big Commerce Storefront,
 
 Sample Images:
 
+![Login](photo 1.png)
+
+![Authenticate](photo 2.png)
+
+![Profile Viewer](photo 3.png)
 
 References: 
 - [Express.js](https://expressjs.com/) 
