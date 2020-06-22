@@ -11,7 +11,7 @@
 Use this application to configure Single Sign On into a Big Commerce Storefront, using OIDC. The custom application is built with Node.js using ExpressJS and PassportJS modules. In this tutorial, you will be able to accomplish:
 1.	Authenticating the client using IBM Cloud Identity
 2.	Viewing the authenticated user's profile
-3.	Dynamically get BC store owner credential, based on callout attribute, and provide dynamic SSO into any BC storefront 
+3.	Dynamically retrieve BigCommerce store owner credential based on callout attribute, and provide dynamic SSO into any BC storefront 
 4.	Logging out of the client
 
 Sample Images:
