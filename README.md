@@ -64,7 +64,7 @@ Whether you want to allow one user, a group, or all users to access this applica
 If you would like to support Social Login, first setup a social provider in Settings -> Identity Sources. Then in your custom application, under Access Policies, choose `specific supported identity sources` and then select your supported social providers.
 
 1.6 **Attribute**
-Create an API attribute "BigCommerceId" with a fixed value of NA. Add attribute to attribute mapping in the sign-on tab of your BigCommerce Application. 
+Create an API attribute "BigCommerceID" with a fixed value of NA. Add attribute to attribute mapping in the sign-on tab of your BigCommerce Application. 
 
 2. **Run the install command**
 In the Git repo folder that you cloned, run the following command from the terminal to ensure everything is up to date. 
