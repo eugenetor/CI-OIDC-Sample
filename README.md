@@ -34,7 +34,7 @@ Configure Node and Github with the following links: [NodeJS](https://nodejs.org/
 2. **Create a tenant in Cloud Identity**
 Sign up through market place: [IBM Cloud Identity](https://www.ibm.com/us-en/marketplace/cloud-identity)
 3. **Clone this repo on your machine**
-`git clone https://github.com/eugenetor/CI-OIDC-Sample.git`
+`git clone https://github.com/ajcase/CI-OIDC-Sample/tree/big-commerce`
 4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/)
 
 **Note:** If you want to make modifications to the UI, this app is built in the [IBM's Carbon Design System](https://carbondesignsystem.com) using [Vanilla JS](https://the-carbon-components.netlify.com/) patterns.
@@ -74,7 +74,7 @@ npm install
 ```
 
 3. **Create Big Commerce API Account**
-In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account. Note the API Path, Client ID, and Client Secret. 
+In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account. Note the API Path, Access Token, Client ID, and Client Secret. 
 
 4. **Create the `.env` file**
 This is a hidden file in your filesystem within the Git repo folder. Edit it by typing `open .env` if on a mac or use vi on linux. If you are on Windows, you will need to set the variables manually in the JS file or find another solution. 
@@ -89,8 +89,33 @@ BC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 BC_STORE_HASH= found in API Path url  https://api.bigcommerce.com/stores/xxxxxxxxxx/v3/
 BC_STORE_URL=https://store-front-name.mybigcommerce.com
 ```
+5. **Create the Callout Script**
+The following skcript connets the CI user profile to the BigCommerce unique login page. The script connects the users emails and shares the customer_id. 
+Fill out the following details in the script. 
+From Security Verify fill out the Tenant-id and bearer-token.
+From BigCommerce enter your Storehash, ClietID and Authorization token (recorded in step 3. 
 
-# Run the App
+curl --location --request POST 'https://your-tenant-id.ice.ibmcloud.com:443/v1.0/attributes' \
+--header 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+     "name": "bigCommerceID",
+     "description": "Big commerce ID",
+     "scope": "tenant",
+     "sourceType": "static",
+     "datatype": "string",
+     "tags": [
+         "sso"
+     ],
+     "value": "NA",
+     "function": {
+         "custom": "string(hc.GetAsString(\"https://api.bigcommerce.com/stores/STOREHASH/v3/customers?email:in=\" + user.emails[0].value, {\"X-Auth-Client\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",
+    \"X-Auth-Token\": \"xxxxxxxxxxxxxxxxxxx\"}))"
+     }
+ }'
+
+
+6. # Run the App
 To run the app, run the following command via the terminal:
 `npm start`
 
