@@ -94,7 +94,7 @@ The following skcript connets the CI user profile to the BigCommerce unique logi
 Fill out the following details in the script. 
 From Security Verify fill out the Tenant-id and bearer-token.
 From BigCommerce enter your Storehash, ClietID and Authorization token (recorded in step 3. 
-
+```
 curl --location --request POST 'https://your-tenant-id.ice.ibmcloud.com:443/v1.0/attributes' \
 --header 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
 --header 'Content-Type: application/json' \
@@ -113,7 +113,8 @@ curl --location --request POST 'https://your-tenant-id.ice.ibmcloud.com:443/v1.0
     \"X-Auth-Token\": \"xxxxxxxxxxxxxxxxxxx\"}))"
      }
  }'
-
+```
+Run the following command in command prompt while in your applications directory
 
 6. # Run the App
 To run the app, run the following command via the terminal:
