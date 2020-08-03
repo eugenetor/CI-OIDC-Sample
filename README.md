@@ -11,8 +11,9 @@
 Use this application to configure Single Sign On into a Big Commerce Storefront, using OIDC. The custom application is built with Node.js using ExpressJS and PassportJS modules. In this tutorial, you will be able to accomplish:
 1.	Authenticating the client using IBM Cloud Identity
 2.	Viewing the authenticated user's profile
-3.	Dynamically retrieve BigCommerce store owner credential based on callout attribute, and provide dynamic SSO into any BC storefront 
-4.	Logging out of the client
+3.	Dynamically retrieve any BigCommerce customer id based on an advanced rule attribute in Security Verify 
+4.   Provide dynamic SSO for any user into any BC storefront 
+5.	Logging out of the client
 
 Sample Images:
 
@@ -31,11 +32,11 @@ References:
 
 1. **Install Node and Github**
 Configure Node and Github with the following links: [NodeJS](https://nodejs.org/en/download/) & [Git](https://desktop.github.com/)
-2. **Create a tenant in Cloud Identity**
+2. **Create a tenant in IBM Security Verify**
 Sign up through market place: [IBM Cloud Identity](https://www.ibm.com/us-en/marketplace/cloud-identity)
 3. **Clone this repo on your machine**
 `git clone https://github.com/ajcase/CI-OIDC-Sample/tree/big-commerce`
-4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/)
+4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/) Can create an account for free with a two week free trial. 
 
 **Note:** If you want to make modifications to the UI, this app is built in the [IBM's Carbon Design System](https://carbondesignsystem.com) using [Vanilla JS](https://the-carbon-components.netlify.com/) patterns.
 
@@ -63,8 +64,6 @@ Whether you want to allow one user, a group, or all users to access this applica
 1.5 (optional) **Social Login**
 If you would like to support Social Login, first setup a social provider in Settings -> Identity Sources. Then in your custom application, under Access Policies, choose `specific supported identity sources` and then select your supported social providers.
 
-1.6 **Attribute**
-Create an API attribute "BigCommerceID" with a fixed value of NA. Add attribute to attribute mapping in the sign-on tab of your BigCommerce Application. 
 
 2. **Run the install command**
 In the Git repo folder that you cloned, run the following command from the terminal to ensure everything is up to date. 
@@ -89,34 +88,18 @@ BC_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 BC_STORE_HASH= found in API Path url  https://api.bigcommerce.com/stores/xxxxxxxxxx/v3/
 BC_STORE_URL=https://store-front-name.mybigcommerce.com
 ```
-5. **Create the Callout Script**
-The following skcript connets the CI user profile to the BigCommerce unique login page. The script connects the users emails and shares the customer_id. 
-Fill out the following details in the script. 
-From Security Verify fill out the Tenant-id and bearer-token.
-From BigCommerce enter your Storehash, ClietID and Authorization token (recorded in step 3. 
-```
-curl --location --request POST 'https://your-tenant-id.ice.ibmcloud.com:443/v1.0/attributes' \
---header 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxx' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "name": "bigCommerceID",
-     "description": "Big commerce ID",
-     "scope": "tenant",
-     "sourceType": "static",
-     "datatype": "string",
-     "tags": [
-         "sso"
-     ],
-     "value": "NA",
-     "function": {
-         "custom": "string(hc.GetAsString(\"https://api.bigcommerce.com/stores/STOREHASH/v3/customers?email:in=\" + user.emails[0].value, {\"X-Auth-Client\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",
-    \"X-Auth-Token\": \"xxxxxxxxxxxxxxxxxxx\"}))"
-     }
- }'
-```
-Run the following command in command prompt while in your applications directory
 
-6. # Run the App
+5 **Advanced Rule Attribute**
+In Security Verify, create an advanced rule attribute named "bigCommerceId". Set the purpose to SSO. Add the following code to the Source and Value Section replacing store hash, X-Auth Client ID, and Token with the data from the Big Commerce API Account. 
+
+```
+string(hc.GetAsJson('https://api.bigcommerce.com/stores/STOREHASH/v3/customers?email:in=' + user.emails[0].value, {'X-Auth-Client': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx','X-Auth-Token': 'xxxxxxxxxxxxxxxxxxxxxx'}).data[0].id)
+```
+
+6. **Add Advanced Rule to Application Attribute Mapping**
+Add the bigCommerceId attribute to the attribute mapping in the sign-on tab of your BigCommerce Application.
+
+7. # Run the App
 To run the app, run the following command via the terminal:
 `npm start`
 
