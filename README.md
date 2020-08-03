@@ -75,7 +75,10 @@ npm install
 3. **Create Big Commerce API Account**
 In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account. Note the API Path, Access Token, Client ID, and Client Secret. 
 
-4. **Create the `.env` file**
+4. **Create Big Commerce Users**
+Create customers in Big Commerce that match entitled users in IBM Security Verify. You will only be able to log into customers that exist with the same email in Big Commerce and Security Verify. 
+
+5. **Create the `.env` file**
 This is a hidden file in your filesystem within the Git repo folder. Edit it by typing `open .env` if on a mac or use vi on linux. If you are on Windows, you will need to set the variables manually in the JS file or find another solution. 
 Edit this file and save it. 
 ```
