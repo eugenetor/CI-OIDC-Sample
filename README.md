@@ -33,7 +33,7 @@ References:
 1. **Install Node and Github**
 Configure Node and Github with the following links: [NodeJS](https://nodejs.org/en/download/) & [Git](https://desktop.github.com/)
 2. **Create a tenant in IBM Security Verify**
-Sign up through market place: [IBM Cloud Identity](https://www.ibm.com/us-en/marketplace/cloud-identity)
+Sign up through market place: [IBM Security Verify](https://www.ibm.com/us-en/marketplace/cloud-identity)
 3. **Clone this repo on your machine**
 `git clone https://github.com/ajcase/CI-OIDC-Sample/tree/big-commerce`
 4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/) Can create an account for free with a two week free trial. 
@@ -76,7 +76,7 @@ npm install
 In the BigCommerce Portal, go to advanced settings, API Accounts, create a new API Account. Note the API Path, Access Token, Client ID, and Client Secret. 
 
 4. **Create Big Commerce Users**
-Create customers in Big Commerce that match entitled users in IBM Security Verify. You will only be able to log into customers that exist with the same email in Big Commerce and Security Verify. 
+Create customers in Big Commerce that match entitled users in IBM Security Verify. You will only be able to SSO with customers that exist with the same email in Big Commerce and Security Verify. 
 
 5. **Create the `.env` file**
 This is a hidden file in your filesystem within the Git repo folder. Edit it by typing `open .env` if on a mac or use vi on linux. If you are on Windows, you will need to set the variables manually in the JS file or find another solution. 
