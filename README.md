@@ -8,11 +8,11 @@
 <!-- /TOC -->
 
 # Overview
-Use this application to configure Single Sign On into a Big Commerce Storefront, using OIDC. The custom application is built with Node.js using ExpressJS and PassportJS modules. In this tutorial, you will be able to accomplish:
+Use this application to configure Single Sign On into a Big Commerce Storefront, using the OIDC protocol. The custom application is built with Node.js using ExpressJS and PassportJS modules. In this tutorial, you will be able to accomplish:
 1.	Authenticating the client using IBM Security Verify
 2.	View the authenticated user's profile
-3.	Dynamically retrieve any BigCommerce customer id based on an advanced rule attribute in Security Verify 
-4.  Provide dynamic SSO for any user into any BC storefront 
+3.	Dynamically retrieve any BigCommerce customer id with an advanced rule attribute in Security Verify 
+4.  Provide dynamic SSO for any BC user with any BC storefront 
 5.	Logging out of the client
 
 Sample Images:
@@ -36,13 +36,13 @@ Configure Node and Github with the following links: [NodeJS](https://nodejs.org/
 Sign up through market place: [IBM Security Verify](https://www.ibm.com/us-en/marketplace/cloud-identity)
 3. **Clone this repo on your machine**
 `git clone https://github.com/ajcase/CI-OIDC-Sample/tree/big-commerce`
-4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/) Can create an account for free with a two week free trial. 
+4. **Create a Big Commerce Storefront** [Big Commerce](https://www.bigcommerce.com/) You can create an account for free with a two week free trial. 
 
 **Note:** If you want to make modifications to the UI, this app is built in the [IBM's Carbon Design System](https://carbondesignsystem.com) using [Vanilla JS](https://the-carbon-components.netlify.com/) patterns.
 
 # Setup
 
-Following the steps below will ensure you will have a working local OIDC application. 
+Following the steps below will ensure you will have a working local OIDC application with a Big Commerce Tenant 
 
 1. **Create an OIDC App in Cloud Identity Connect**
 Go to the IBM Cloud Identity portal and create a new application. Choose the custom application option. In Sign-On Method, choose `Open ID Connect 1.0`.
